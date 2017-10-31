@@ -376,11 +376,7 @@ def deleteGameList(nintendo_id, list_id):
     nintendo = session.query(NC).filter_by(id=nintendo_id).one()
     gameToDelete = session.query(GameList).filter_by(id=list_id).one()
     if login_session['user_id'] != nintendo.user_id:
-        return "<script>function myFunction()"
-        "{alert('You are not authorized to'"
-        "'delete a game to this console.'"
-        "'Please create your own console in order to delete games.');"
-        "}</script><body onload='myFunction()''>"
+        return "<script>function myFunction() {alert('You are not authorized to delete game');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         session.delete(gameToDelete)
         session.commit()
