@@ -19,7 +19,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Create dummy user
-User1 = User(name="Jose Ramirez", email="jdevla@protonmail.com",
+User1 = User(name="Super Mario", email="nintendo@protonmail.com",
              picture='http://s3.amazonaws.com/cdn.roosterteeth.com/uploads/'
                      'images/45c87974-bc64-49a3-9502-529d563fda8a/'
                      'md/jizzee44f75c08c3665.jpg')
