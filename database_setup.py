@@ -7,6 +7,7 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = 'user'
 
@@ -15,8 +16,9 @@ class User(Base):
     email = Column(String(250), nullable=False)
     picture = Column(String(250))
 
+
 class NC(Base):
-    __tablename__= 'nintendo'
+    __tablename__ = 'nintendo'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
@@ -31,14 +33,16 @@ class NC(Base):
             'id': self.id,
         }
 
-#class for Game list Database
+# class for Game list Database
+
+
 class GameList(Base):
     __tablename__ = 'list'
 
     name = Column(String(80), nullable=False)
     maker = Column(String(80), nullable=False)
     id = Column(Integer, primary_key=True)
-    description = Column(String(80), nullable=False) 
+    description = Column(String(80), nullable=False)
     price = Column(String(8))
     nintendo_id = Column(Integer, ForeignKey('nintendo.id'))
     nintendo = relationship(NC)
