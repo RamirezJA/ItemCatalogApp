@@ -225,7 +225,6 @@ def newNintendo():
         return redirect(url_for('showNintendos'))
     else:
         return render_template('newNintendo.html')
-    
 
 # Edit a console
 
@@ -251,7 +250,6 @@ def editNintendo(nintendo_id):
         return render_template(
             'editNintendo.html', nintendo=editedNintendo)
 
-    
 
 # Delete a Console
 
@@ -272,7 +270,6 @@ def deleteNintendo(nintendo_id):
     else:
         return render_template(
             'deleteNintendo.html', nintendo=nintendoToDelete)
-    
 
 # Show Games
 
@@ -290,7 +287,6 @@ def showGameList(nintendo_id):
     else:
         return render_template('list.html', lists=lists,
                                nintendo=nintendo, creator=creator)
-    
 
 
 # Show Game detail
@@ -325,9 +321,8 @@ def newGameList(nintendo_id):
         return redirect(url_for('showGameList', nintendo_id=nintendo_id))
     else:
         return render_template('newGameList.html', nintendo_id=nintendo_id)
-    
 
-# Edit a Game 
+# Edit a Game
 
 
 @app.route('/nintendo/<int:nintendo_id>/list/<int:list_id>/edit',
@@ -357,9 +352,8 @@ def editGameList(nintendo_id, list_id):
         return render_template('editGameList.html', nintendo_id=nintendo_id,
                                list_id=list_id, lists=editedGame)
 
-    
 
-# Delete a game 
+# Delete a game
 
 
 @app.route('/nintendo/<int:nintendo_id>/list/<int:list_id>/delete',
@@ -378,7 +372,6 @@ def deleteGameList(nintendo_id, list_id):
         return redirect(url_for('showGameList', nintendo_id=nintendo_id))
     else:
         return render_template('deleteGameList.html', list=gameToDelete)
-    
 
 
 if __name__ == '__main__':
