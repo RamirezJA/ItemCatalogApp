@@ -234,11 +234,17 @@ def newNintendo():
 def editNintendo(nintendo_id):
     if 'username' not in login_session:
         return redirect('/login')
+    editedNintendo = session.query(NC).filter_by(id=nintendo_id).one()
+    creator = getUserInfo(editedNintendo.user_id)
+    if creator.id != login_session['user_id']:
+        return "<script>function myFunction() {alert('You are not authorized to edit this console.');}</script><body onload='myFunction()'>"
     editedNintendo = session.query(
         NC).filter_by(id=nintendo_id).one()
     if request.method == 'POST':
         if request.form['name']:
             editedNintendo.name = request.form['name']
+            session.add(editedNintendo)
+            session.commit()
             flash('Console Successfully Edited %s' % editedNintendo.name)
             return redirect(url_for('showNintendos'))
     else:
