@@ -19,6 +19,10 @@ Launch the Vagrant VM (vagrant up)
 
 Place this repository in the catalog folder
 
+Run the database_setup.py file
+
+Run the nintendogames.py file
+
 Run your application within the VM (python /vagrant/catalog/final.py)
 
 Access and test your application by visiting http://localhost:5000 locally
