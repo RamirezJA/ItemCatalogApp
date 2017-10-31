@@ -344,7 +344,10 @@ def newGameList(nintendo_id):
 def editGameList(nintendo_id, list_id):
     if 'username' not in login_session:
         return redirect('/login')
+    nintendo = session.query(NC).filter_by(id=nintendo_id).one()
     editedGame = session.query(GameList).filter_by(id=list_id).one()
+    if login_session['user_id'] != nintendo.user_id:
+        return "<script>function myFunction() {alert('You are not authorized to edit game');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         if request.form['name']:
             editedGame.name = request.form['name']
