@@ -19,8 +19,10 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # Create dummy user
-User1 = User(name="Peace", email="love@gmail.com",
-             picture='http://s3.amazonaws.com/cdn.roosterteeth.com/uploads/images/45c87974-bc64-49a3-9502-529d563fda8a/md/jizzee44f75c08c3665.jpg')
+User1 = User(name="Jose Ramirez", email="jdevla@protonmail.com",
+             picture='http://s3.amazonaws.com/cdn.roosterteeth.com/uploads/'
+                     'images/45c87974-bc64-49a3-9502-529d563fda8a/'
+                     'md/jizzee44f75c08c3665.jpg')
 session.add(User1)
 session.commit()
 
@@ -31,8 +33,10 @@ session.add(nintendo1)
 session.commit()
 
 
-game1 = GameList(user_id=1, name="Super Mario Bros. 3", maker="Nintendo", description=" The greatest mario game of its generation.",
-                     price="$4.99", nintendo=nintendo1)
+game1 = GameList(user_id=1, name="Super Mario Bros. 3",
+                 maker="Nintendo",
+                 description=" The greatest mario game of its generation.",
+                 price="$4.99", nintendo=nintendo1)
 
 session.add(game1)
 session.commit()
@@ -43,8 +47,10 @@ nintendo2 = NC(user_id=1, name="Gameboy")
 session.add(nintendo2)
 session.commit()
 
-game1 = GameList(user_id=1, name="Pokemon Blue/Red", maker="Nintendo", description=" The game classic that started it all.",
-                     price="$4.99", nintendo=nintendo2)
+game1 = GameList(user_id=1, name="Pokemon Blue/Red",
+                 maker="Nintendo",
+                 description=" The game classic that started it all.",
+                 price="$4.99", nintendo=nintendo2)
 
 session.add(game1)
 session.commit()
@@ -55,11 +61,11 @@ nintendo3 = NC(user_id=1, name="Super Nintendo")
 session.add(nintendo3)
 session.commit()
 
-game1 = GameList(user_id=1, name="The Legend of Zelda: A Link to the Past", maker="Nintendo", description=" A masterpiece",
-                     price="$4.99", nintendo=nintendo3)
+game1 = GameList(user_id=1, name="The Legend of Zelda: A Link to the Past",
+                 maker="Nintendo", description=" A masterpiece",
+                 price="$4.99", nintendo=nintendo3)
 
 session.add(game1)
 session.commit()
 
 print "added games!"
-
