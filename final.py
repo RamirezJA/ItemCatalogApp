@@ -261,13 +261,8 @@ def deleteNintendo(nintendo_id):
     if 'username' not in login_session:
         return redirect('/login')
     nintendoToDelete = session.query(NC).filter_by(id=nintendo_id).one()
-    if 'username' not in login_session:
-        return redirect('/login')
-    if nintendoToDelete.user_id != login_session['user_id']:
-        return "<script>function myFunction()"
-        "{alert('You are not authorized to delete this console.'"
-        "' Please create your own console in order to delete.')"
-        ";}</script><body onload='myFunction()''>"
+    if login_session['user_id'] != nintendoToDelete.user_id:
+        return "<script>function myFunction() {alert('You are not authorized to delete console');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         session.delete(nintendoToDelete)
         flash('%s Successfully Deleted' % nintendoToDelete.name)
@@ -289,8 +284,7 @@ def showGameList(nintendo_id):
     creator = getUserInfo(nintendo.user_id)
     lists = session.query(GameList).filter_by(
         nintendo_id=nintendo_id).all()
-    if 'username' not in login_session or \
-            creator.id != login_session['user_id']:
+    if 'username' not in login_session:
         return render_template('publicgames.html',
                                lists=lists, nintendo=nintendo, creator=creator)
     else:
@@ -317,10 +311,7 @@ def newGameList(nintendo_id):
         return redirect('/login')
     nintendo = session.query(NC).filter_by(id=nintendo_id).one()
     if login_session['user_id'] != nintendo.user_id:
-        return "<script>function myFunction()"
-        "{alert('You are not authorized to games to this console.'"
-        "'Please create your own console in order to add games.');"
-        "}</script><body onload='myFunction()'>"
+        return "<script>function myFunction() {alert('You are not authorized to add game');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         newGame = GameList(name=request.form['name'],
                            maker=request.form['maker'],
