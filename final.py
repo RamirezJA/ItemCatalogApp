@@ -198,7 +198,7 @@ def nintendoListJSON(nintendo_id):
     return jsonify(GameLists=[i.serialize for i in lists])
 
 
-# Show all Nintendos
+# Show all Consoles
 @app.route('/')
 @app.route('/nintendo/')
 def showNintendos():
@@ -225,9 +225,9 @@ def newNintendo():
         return redirect(url_for('showNintendos'))
     else:
         return render_template('newNintendo.html')
-    # return "This page will be for making a new restaurant"
+    
 
-# Edit a restaurant
+# Edit a console
 
 
 @app.route('/nintendo/<int:nintendo_id>/edit/', methods=['GET', 'POST'])
@@ -245,7 +245,7 @@ def editNintendo(nintendo_id):
         return render_template(
             'editNintendo.html', nintendo=editedNintendo)
 
-    # return 'This page will be for editing nintendo %s' % nintendo_id
+    
 
 # Delete a Console
 
@@ -271,9 +271,9 @@ def deleteNintendo(nintendo_id):
     else:
         return render_template(
             'deleteNintendo.html', nintendo=nintendoToDelete)
-    # return 'This page will be for deleting nintendo %s' % nintendo_id
+    
 
-# Show a restaurant menu
+# Show Games
 
 
 @app.route('/nintendo/<int:nintendo_id>/')
@@ -290,7 +290,7 @@ def showGameList(nintendo_id):
     else:
         return render_template('list.html', lists=lists,
                                nintendo=nintendo, creator=creator)
-    # return 'This page is the menu for nintendo %s' % nintendo_id
+    
 
 
 # Show Game detail
@@ -302,7 +302,7 @@ def GameDetail(nintendo_id, list_id):
     return render_template('description.html', lists=lists, nintendo=nintendo)
 
 
-# Create a new menu item
+# Create a new game
 
 
 @app.route('/nintendo/<int:nintendo_id>/list/new/', methods=['GET', 'POST'])
@@ -328,10 +328,9 @@ def newGameList(nintendo_id):
         return redirect(url_for('showGameList', nintendo_id=nintendo_id))
     else:
         return render_template('newGameList.html', nintendo_id=nintendo_id)
-    # return 'This page is for making a new game item for NC %s'
-    # %nintendo_id
+    
 
-# Edit a Game List
+# Edit a Game 
 
 
 @app.route('/nintendo/<int:nintendo_id>/list/<int:list_id>/edit',
@@ -358,9 +357,9 @@ def editGameList(nintendo_id, list_id):
         return render_template('editGameList.html', nintendo_id=nintendo_id,
                                list_id=list_id, lists=editedGame)
 
-    # return 'This page is for editing menu item %s' % menu_id
+    
 
-# Delete a menu item
+# Delete a game 
 
 
 @app.route('/nintendo/<int:nintendo_id>/list/<int:list_id>/delete',
@@ -383,7 +382,7 @@ def deleteGameList(nintendo_id, list_id):
         return redirect(url_for('showGameList', nintendo_id=nintendo_id))
     else:
         return render_template('deleteGameList.html', list=gameToDelete)
-    # return "This page is for deleting menu item %s" % menu_id
+    
 
 
 if __name__ == '__main__':
