@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit {{nintendo.name}}</h1>
+		</div>
+	</div>
+	<form action="{{ url_for('editNintendo',nintendo_id = nintendo.id)}}" method = 'post'>
+
+
+	<p>Name:</p>
+		<input type ='text' size='30' name='name' placeholder = '{{nintendo.name }}'>
+
+
+<input type='submit' value='Edit'>
+
+
+<a href = '{{url_for('showNintendos')}}'> Cancel </a>
+
+</form>
+{% endblock %}

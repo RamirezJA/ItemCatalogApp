@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<h2> Are you sure you want to delete {{list.name}}? </h2>
+
+<form action="#" method = 'post'>
+
+<input type='submit', value = 'Delete'>
+
+
+
+
+</form>
+
+<a href = '{{url_for('showNintendos')}}'> Cancel </a>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

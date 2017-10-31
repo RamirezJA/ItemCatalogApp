@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row top-menu">
+		<div class="col-md-10"></div>
+		<div class="col-md-2 text-right">
+					</div>
+	</div>
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<h1>Consoles</h1>
+		</div>
+	</div>
+	
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 padding-none">
+			<a href="{{url_for('newNintendo')}}">
+				<button class="btn btn-default" id="new-nintendo">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Console
+				</button>
+			</a>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	{% for nintendo in nintendos %}
+		<a href = "{{url_for('showGameList', nintendo_id = nintendo.id)}}">
+			<div class="row">
+				<div class="col-md-1"></div>
+					<div class="col-md-10 nintendo-list">
+						<h3>{{nintendo.name}}</h3>
+					</div>
+				<div class="col-md-1"></div>
+			</div>
+		</a>
+	{% endfor %}
+{% endblock %}

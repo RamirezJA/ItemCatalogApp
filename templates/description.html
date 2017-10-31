@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row top-menu">
+		<div class="col-md-10"></div>
+		<div class="col-md-2 text-right">
+					</div>
+	</div>
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<h1>Consoles</h1>
+		</div>
+	</div>
+	{% if lists !=[] %}	
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<h2>Game</h2>
+					{% for i in lists %}
+							<div class="list-item">
+								<h3>{{i.name}}</h3>
+								<h5>{{i.maker}}</h5>
+								<p>{{i.description}}</p>
+								<p class="list-price">{{i.price}}</p>
+								<a href='{{url_for('editGameList', nintendo_id = nintendo.id, list_id=i.id ) }}'>Edit</a> | 
+								<a href='{{url_for('deleteGameList', nintendo_id = nintendo.id, list_id=i.id ) }}'>Delete</a>
+							</div>
+					{% endfor %}
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	{% endif %}
+{% endblock %}
