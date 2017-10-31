@@ -40,13 +40,11 @@
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
-				<h2>Awesome Games</h2>
+				<h2>Games</h2>
 					{% for i in lists %}
+						<a href = '{{url_for('GameDetail', nintendo_id = nintendo.id, list_id=i.id )}}'>
 							<div class="game-item">
 								<h3>{{i.name}}</h3>
-								
-								<p>{{i.description}}</p>
-								<p class="game-price">{{i.price}}</p>
 							</div>
 					{% endfor %}
 			</div>
