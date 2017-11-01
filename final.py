@@ -236,9 +236,9 @@ def editNintendo(nintendo_id):
     editedNintendo = session.query(NC).filter_by(id=nintendo_id).one()
     creator = getUserInfo(editedNintendo.user_id)
     if creator.id != login_session['user_id']:
-        return "<script>function myFunction() "
-        "{alert('You are not authorized to edit this console.');}</script>"
-        "<body onload='myFunction()'>"
+        return """<script>function myFunction()
+               {alert('You are not authorized to edit this console.');}
+               </script><body onload='myFunction()'>"""
     editedNintendo = session.query(
         NC).filter_by(id=nintendo_id).one()
     if request.method == 'POST':
@@ -262,9 +262,9 @@ def deleteNintendo(nintendo_id):
         return redirect('/login')
     nintendoToDelete = session.query(NC).filter_by(id=nintendo_id).one()
     if login_session['user_id'] != nintendoToDelete.user_id:
-        return "<script>function myFunction() "
-        "{alert('You are not authorized to delete console');}</script>"
-        "<body onload='myFunction()'>"
+        return """<script>function myFunction()
+               {alert('You are not authorized to delete this console.');}
+               </script><body onload='myFunction()'>"""
     if request.method == 'POST':
         session.delete(nintendoToDelete)
         flash('%s Successfully Deleted' % nintendoToDelete.name)
@@ -311,9 +311,9 @@ def newGameList(nintendo_id):
         return redirect('/login')
     nintendo = session.query(NC).filter_by(id=nintendo_id).one()
     if login_session['user_id'] != nintendo.user_id:
-        return "<script>function myFunction() "
-        "{alert('You are not authorized to add game');}</script>"
-        "<body onload='myFunction()'>"
+        return """<script>function myFunction()
+               {alert('You are not authorized to add a game.');}
+               </script><body onload='myFunction()'>"""
     if request.method == 'POST':
         newGame = GameList(name=request.form['name'],
                            maker=request.form['maker'],
@@ -339,9 +339,9 @@ def editGameList(nintendo_id, list_id):
     nintendo = session.query(NC).filter_by(id=nintendo_id).one()
     editedGame = session.query(GameList).filter_by(id=list_id).one()
     if login_session['user_id'] != nintendo.user_id:
-        return "<script>function myFunction() "
-        "{alert('You are not authorized to edit game');}</script>"
-        "<body onload='myFunction()'>"
+        return """<script>function myFunction()
+               {alert('You are not authorized to edit game.');}
+               </script><body onload='myFunction()'>"""
     if request.method == 'POST':
         if request.form['name']:
             editedGame.name = request.form['name']
@@ -372,9 +372,9 @@ def deleteGameList(nintendo_id, list_id):
     nintendo = session.query(NC).filter_by(id=nintendo_id).one()
     gameToDelete = session.query(GameList).filter_by(id=list_id).one()
     if login_session['user_id'] != nintendo.user_id:
-        return "<script>function myFunction() "
-        "{alert('You are not authorized to delete game');}</script>"
-        "<body onload='myFunction()'>"
+        return """<script>function myFunction()
+               {alert('You are not authorized to delete game.');}
+               </script><body onload='myFunction()'>"""
     if request.method == 'POST':
         session.delete(gameToDelete)
         session.commit()
